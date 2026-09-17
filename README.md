@@ -10,39 +10,40 @@
 
 ```
 SDP-A2/
-├── src/
-│   ├── GameWorldKit.java            # Entry point — runs both demos
-│   ├── factorymethod/               # Part A: Factory Method
-│   │   ├── Enemy.java               # Product interface
-│   │   ├── Goblin.java              # Concrete product
-│   │   ├── Skeleton.java            # Concrete product
-│   │   ├── Slime.java               # Concrete product
-│   │   ├── EnemySpawner.java        # Abstract Creator (factory method + business logic)
-│   │   ├── GoblinSpawner.java       # Concrete Creator
-│   │   ├── SkeletonSpawner.java     # Concrete Creator
-│   │   ├── SlimeSpawner.java        # Concrete Creator
-│   │   └── Main.java                # Demo
-│   └── abstractfactory/             # Part B: Abstract Factory
-│       ├── WorldEnemy.java          # Abstract product 1
-│       ├── Terrain.java             # Abstract product 2
-│       ├── Soundtrack.java          # Abstract product 3
-│       ├── WorldFactory.java        # Abstract Factory interface
-│       ├── ForestEnemy.java         # Forest family
-│       ├── ForestTerrain.java
-│       ├── ForestSoundtrack.java
-│       ├── IceEnemy.java            # Ice family
-│       ├── IceTerrain.java
-│       ├── IceSoundtrack.java
-│       ├── DesertEnemy.java         # Desert family
-│       ├── DesertTerrain.java
-│       ├── DesertSoundtrack.java
-│       ├── ForestWorldFactory.java  # Concrete Factory
-│       ├── IceWorldFactory.java     # Concrete Factory
-│       ├── DesertWorldFactory.java  # Concrete Factory
-│       ├── World.java               # Result object (built via factory)
-│       ├── WorldGenerator.java      # Client helper
-│       └── Main.java                # Demo
-└── README.md
+├── pom.xml                              # Maven config
+├── README.md
+└── src/main/java/
+    ├── GameWorldKit.java                # Entry point — runs both demos
+    ├── factorymethod/                   # Part A: Factory Method
+    │   ├── Enemy.java                   # Product interface
+    │   ├── Goblin.java                  # Concrete product
+    │   ├── Skeleton.java                # Concrete product
+    │   ├── Slime.java                   # Concrete product
+    │   ├── EnemySpawner.java            # Abstract Creator (factory method + business logic)
+    │   ├── GoblinSpawner.java           # Concrete Creator
+    │   ├── SkeletonSpawner.java         # Concrete Creator
+    │   ├── SlimeSpawner.java            # Concrete Creator
+    │   └── Main.java                    # Demo
+    └── abstractfactory/                 # Part B: Abstract Factory
+        ├── WorldEnemy.java              # Abstract product 1
+        ├── Terrain.java                 # Abstract product 2
+        ├── Soundtrack.java              # Abstract product 3
+        ├── WorldFactory.java            # Abstract Factory interface
+        ├── ForestEnemy.java             # Forest family
+        ├── ForestTerrain.java
+        ├── ForestSoundtrack.java
+        ├── IceEnemy.java                # Ice family
+        ├── IceTerrain.java
+        ├── IceSoundtrack.java
+        ├── DesertEnemy.java             # Desert family
+        ├── DesertTerrain.java
+        ├── DesertSoundtrack.java
+        ├── ForestWorldFactory.java      # Concrete Factory
+        ├── IceWorldFactory.java         # Concrete Factory
+        ├── DesertWorldFactory.java      # Concrete Factory
+        ├── World.java                   # Result object (built via factory)
+        ├── WorldGenerator.java          # Client helper
+        └── Main.java                    # Demo
 ```
 
 ---
@@ -50,17 +51,12 @@ SDP-A2/
 ## How to Run
 
 ```bash
-# Compile
-javac -d out src/factorymethod/*.java src/abstractfactory/*.java
+# Compile and run (one command)
+mvn compile exec:java
 
-# Run Part A (Factory Method)
-java -cp out factorymethod.Main
-
-# Run Part B (Abstract Factory)
-java -cp out abstractfactory.Main
-
-# Run both
-java -cp out GameWorldKit
+# Or step by step
+mvn compile                    # compile only
+mvn exec:java                  # run only (if already compiled)
 ```
 
 ---
