@@ -2,7 +2,7 @@
 
 **Theme:** Game World Kit — a console application that creates themed game worlds with enemies, terrains, and soundtracks.
 
-**Author:** AlmazCode
+**Author:** Sabirzhanov Emil
 
 ---
 
