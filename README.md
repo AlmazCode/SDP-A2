@@ -126,25 +126,3 @@ Creates a **complete themed world** — a family of 3 products (enemy + terrain 
 | Weak spot | Adding a new product type requires changing the Creator | Adding a new product type requires changing the Factory interface + ALL factories |
 
 ---
-
-## Potential Drawbacks
-
-1. **Over-engineering for simple cases:** If you only ever need one enemy type, Factory Method adds unnecessary class hierarchy.
-2. **Abstract Factory explosion:** Adding a 4th product type (e.g., `Weather`) to Part B means adding a method to `WorldFactory` AND updating all 3 concrete factories — violates OCP in that direction.
-3. **Hard to test in isolation:** Factory classes create concrete objects internally, so unit testing the client requires mocking the factory interface.
-
----
-
-## What to Say in Defense
-
-**Q: Why is Part A Factory Method?**
-A: Because `EnemySpawner` is the abstract creator with a factory method `createEnemy()`. Each concrete spawner overrides it. The business method `spawnAndAttack()` uses the product through the `Enemy` interface — it doesn't know which enemy it gets.
-
-**Q: Why is Part B Abstract Factory?**
-A: Because `WorldFactory` creates a FAMILY of 3 related products. Client code (`World`) receives the factory by composition and only uses the interfaces. Switching the factory switches the entire world consistently.
-
-**Q: How does this connect to SOLID?**
-A: OCP — adding a new enemy/world doesn't modify existing classes. SRP — each class has one reason to change (one spawner per enemy type, one factory per world).
-
-**Q: What's the difference between the two patterns?**
-A: Factory Method uses inheritance to decide which single product to create. Abstract Factory uses composition to create a whole family of compatible products at once.
